@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<personajes>
+    <personaje>
+        <nombre>Sayka</nombre>
+        <servidor>Sanguino</servidor>
+        <raza>Elfo de sangre</raza>
+        <nivel>60</nivel>
+        <faccion>Horda</faccion>
+    </personaje>
+    <personaje>
+        <nombre>Dankaly</nombre>
+        <servidor>Sanguino</servidor>
+        <raza>Troll Zandalari</raza>
+        <nivel>60</nivel>
+        <faccion>Horda</faccion>
+    </personaje>
+    <personaje>
+        <nombre>Victarion</nombre>
+        <servidor>Sanguino</servidor>
+        <raza>Elfo de sangre</raza>
+        <nivel>60</nivel>
+        <faccion>Horda</faccion>
+    </personaje>
+    <personaje>
+        <nombre>Bigbron</nombre>
+        <servidor>Sanguino</servidor>
+        <raza>Tauren</raza>
+        <nivel>60</nivel>
+        <faccion>Horda</faccion>
+    </personaje>
+    <personaje>
+        <nombre>Nocash</nombre>
+        <servidor>Sanguino</servidor>
+        <raza>No-muerto</raza>
+        <nivel>50</nivel>
+        <faccion>Horda</faccion>
+    </personaje>
+    <objetos>
+        <objeto>
+            <id_objeto>1235A</id_objeto>
+            <nombre_objeto>Capa comun</nombre_objeto>
+            <rareza>Comun</rareza>
+            <precio>1.0</precio>
+            <descripcion>Tela</descripcion>
+        </objeto>
+        <objeto>
+            <id_objeto>12345B</id_objeto>
+            <nombre_objeto>Cota de malla</nombre_objeto>
+            <rareza>Rara</rareza>
+            <precio>10.0</precio>
+            <descripcion>Usada por alguien </descripcion>
+        </objeto>
+        <objeto>
+            <id_objeto>124AG</id_objeto>
+            <nombre_objeto>Espadon</nombre_objeto>
+            <rareza>Comun</rareza>
+            <precio>5.0</precio>
+            <descripcion>Espadon usado por caballeros</descripcion>
+        </objeto>
+    </objetos>
+</personajes>

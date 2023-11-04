@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<hermandades>
+    <hermandad>
+        <id_hermandad>GUILD1</id_hermandad>
+        <nombre>Hola</nombre>
+        <servidor>Exodar</servidor>
+        <numero_miembros>1</numero_miembros>
+        <miembros>
+            <miembro>
+                <id_personaje>PJ1</id_personaje>
+            </miembro>
+        </miembros>
+    </hermandad>
+    <hermandad>
+        <id_hermandad>GUILD2</id_hermandad>
+        <nombre>Tortulianos</nombre>
+        <servidor>Exodar</servidor>
+        <numero_miembros>1</numero_miembros>
+        <miembros>
+            <miembro>
+                <id_personaje>PJ1</id_personaje>
+            </miembro>
+        </miembros>
+    </hermandad>
+</hermandades>

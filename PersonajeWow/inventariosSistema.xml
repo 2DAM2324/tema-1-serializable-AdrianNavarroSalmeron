@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inventarios>
+    <inventario>
+        <id_inventario>INV1</id_inventario>
+        <id_personaje>PJ1</id_personaje>
+        <capacidad_maxima>20</capacidad_maxima>
+        <espacios_ocupados>2</espacios_ocupados>
+        <objetos>
+            <objeto>
+                <id_objeto>OB2</id_objeto>
+                <nombre_objeto>Escudo basico</nombre_objeto>
+            </objeto>
+            <objeto>
+                <id_objeto>OB11</id_objeto>
+                <nombre_objeto>Daga de mithril</nombre_objeto>
+            </objeto>
+        </objetos>
+    </inventario>
+</inventarios>
