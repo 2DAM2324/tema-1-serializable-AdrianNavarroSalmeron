@@ -1278,13 +1278,25 @@ public class Ventana1 extends javax.swing.JFrame {
          String razaPersonaje = jTextField_personaje_raza.getText();
          String nivelPersonaje = jTextField_personaje_nivel.getText();
          String faccion = jComboBox_personaje_faccion.getSelectedItem().toString();
-         int posicionPersonaje = controlador.buscarPersonajeEnSistema(nombrePersonaje, servidorPersonaje);
-         if(posicionPersonaje == -1){
-              controlador.añadirPersonaje(nombrePersonaje, servidorPersonaje, razaPersonaje, nivelPersonaje, faccion);
-              ocultarSeccionPersonajeAñadir();
-         }
-         else{
-             JOptionPane.showMessageDialog(this, "Ese nombre ya esta elegido", "Error", JOptionPane.ERROR_MESSAGE);
+         //Quitar espacios en blanco del principio y final de los strings
+         nombrePersonaje = nombrePersonaje.trim();
+         servidorPersonaje = servidorPersonaje.trim();
+         razaPersonaje = razaPersonaje.trim();
+         faccion = faccion.trim();
+         try {
+             int posicionPersonaje = controlador.buscarPersonajeEnSistema(nombrePersonaje, servidorPersonaje);
+             if (posicionPersonaje == -1 && controlador.comprobarSiNivelCorrecto(Integer.parseInt(nivelPersonaje)) && !razaPersonaje.isEmpty() && !faccion.isEmpty()) {
+                 controlador.añadirPersonaje(nombrePersonaje, servidorPersonaje, razaPersonaje, nivelPersonaje, faccion);
+                 ocultarSeccionPersonajeAñadir();
+             } else {
+                 JOptionPane.showMessageDialog(this, "Ese nombre ya esta elegido", "Error", JOptionPane.ERROR_MESSAGE);
+             }
+         } catch (NumberFormatException e) {
+             JOptionPane.showMessageDialog(this, "El nivel debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+         } catch (NullPointerException e) {
+             JOptionPane.showMessageDialog(this, "El nivel debe ser un numero entero", "Error", JOptionPane.ERROR_MESSAGE);
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Error desconocido", "Error", JOptionPane.ERROR_MESSAGE);
          }
      }
      
@@ -1507,15 +1519,33 @@ public class Ventana1 extends javax.swing.JFrame {
             int posicionPersonaje = controlador.buscarPersonajeEnSistema(nombreModificar, servidorModificar);
             Personaje personaje = controlador.getArrayDePersonajesDeSistema().get(posicionPersonaje);
 
-            String idPersonaje = personaje.getIdPersonaje();
-            String nombrePersonajeConfirmar = jTextField_nombre_personaje.getText();
-            String servidorPersonajeModificar = jTextField_personaje_servidor.getText();
-            String razaPersonajeModificar = jTextField_personaje_raza.getText();
-            int nivelPersonajeModificar = Integer.parseInt(jTextField_personaje_nivel.getText());
-            String faccionPersonajeModificar = (String) jComboBox_personaje_faccion.getSelectedItem();
+            try {
+                String idPersonaje = personaje.getIdPersonaje();
+                String nombrePersonajeConfirmar = jTextField_nombre_personaje.getText();
+                String servidorPersonajeModificar = jTextField_personaje_servidor.getText();
+                String razaPersonajeModificar = jTextField_personaje_raza.getText();
+                int nivelPersonajeModificar = Integer.parseInt(jTextField_personaje_nivel.getText());
+                String faccionPersonajeModificar = (String) jComboBox_personaje_faccion.getSelectedItem();
 
-            controlador.modificarPersonaje(idPersonaje, nombrePersonajeConfirmar, servidorPersonajeModificar, razaPersonajeModificar, nivelPersonajeModificar, faccionPersonajeModificar);
-            ocultarSeccionPersonajeModificar();
+                nombrePersonajeConfirmar = nombrePersonajeConfirmar.trim();
+                servidorPersonajeModificar = servidorPersonajeModificar.trim();
+                razaPersonajeModificar = razaPersonajeModificar.trim();
+                faccionPersonajeModificar = faccionPersonajeModificar.trim();
+
+                //Se asegura de que todos los campos contengan datos
+                if (nombrePersonajeConfirmar.isEmpty() || servidorPersonajeModificar.isEmpty() || razaPersonajeModificar.isEmpty() || faccionPersonajeModificar.isEmpty() || !controlador.comprobarSiNivelCorrecto(nivelPersonajeModificar)) {
+                    JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    controlador.modificarPersonaje(idPersonaje, nombrePersonajeConfirmar, servidorPersonajeModificar, razaPersonajeModificar, nivelPersonajeModificar, faccionPersonajeModificar);
+                    ocultarSeccionPersonajeModificar();
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El nivel debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "El nivel debe ser un numero entero", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error desconocido", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton_confirmar_modificacion_personajeActionPerformed
 

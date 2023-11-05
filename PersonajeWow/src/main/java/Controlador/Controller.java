@@ -397,6 +397,17 @@ public final class Controller implements Serializable {
         }
     }
     
+    //Funcion para comprobar si el nivel esta entre 1 y 60
+    public boolean comprobarSiNivelCorrecto(int nivel) {
+        boolean correcto = false;
+        if (nivel < 1 || nivel > 60) {
+            JOptionPane.showMessageDialog(vista, "El nivel debe estar entre 1 y 60", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            correcto = true;
+        }
+        return correcto;
+    }
+    
     public int buscarPersonajeEnSistema(String nombre, String servidor){
         for (int i = 0; i < this.getArrayDePersonajesDeSistema().size(); i++) {
             if (nombre.equals(this.getArrayDePersonajesDeSistema().get(i).getNombre()) && servidor.equals(this.getArrayDePersonajesDeSistema().get(i).getServidor())) {
