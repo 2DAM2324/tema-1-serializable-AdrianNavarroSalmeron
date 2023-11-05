@@ -1655,6 +1655,8 @@ public class Ventana1 extends javax.swing.JFrame {
         
         String nombreHermandad = jTextField_nombre_hermandad.getText();
         String servidorHermandad = jTextField_servidor_hermandad.getText();
+        nombreHermandad = nombreHermandad.trim();
+        servidorHermandad = servidorHermandad.trim();
         
         if(!nombreHermandad.isEmpty() && !servidorHermandad.isEmpty()){
             controlador.añadirHermandad(nombreHermandad, servidorHermandad);
@@ -1687,6 +1689,8 @@ public class Ventana1 extends javax.swing.JFrame {
             if (controlador.buscarHermandadPorNombre(nombreOriginal, servidorOriginal)  != -1){
                 String nombreModificar = jTextField_nombre_hermandad.getText();
                 String servidorModificar = jTextField_servidor_hermandad.getText();
+                nombreModificar = nombreModificar.trim();
+                servidorModificar = servidorModificar.trim();
                 if(!nombreModificar.isEmpty() && !servidorModificar.isEmpty()){
                     ocultarSeccionInferiorHermandad();
                     jButton_confirmar_modificacion_hermandad.setVisible(false);
@@ -1764,6 +1768,12 @@ public class Ventana1 extends javax.swing.JFrame {
             String servidorPersonaje = (String) model.getValueAt(selectedRow, 1); // Suponiendo que la columna 1 contiene el nombre del objeto
             String nombreHermandad = jTextField_nombre_hermandad.getText();
             String servidorHermandad = jTextField_servidor_hermandad.getText();
+            
+            nombrePersonaje = nombrePersonaje.trim();
+            servidorPersonaje = servidorPersonaje.trim();
+            nombreHermandad = nombreHermandad.trim();
+            servidorHermandad = servidorHermandad.trim();
+            
             controlador.borrarPersonajeDeHermandad(nombrePersonaje, servidorPersonaje, nombreHermandad, servidorHermandad);
         }
         else{
