@@ -1452,6 +1452,9 @@ public class Ventana1 extends javax.swing.JFrame {
         String rarezaObjetoConfirmar = jTextField_rareza_objeto.getText();
         String precioObjetoConfirmar = jTextField_precio_objeto.getText();
         String descripcionObjetoConfirmar = jTextField_descripcion_objeto.getText();
+        nombreObjetoConfirmar = nombreObjetoConfirmar.trim();
+        rarezaObjetoConfirmar = rarezaObjetoConfirmar.trim();
+        descripcionObjetoConfirmar = descripcionObjetoConfirmar.trim(); 
         //Filtros un poco a lo bruto
         if(!idObjetoConfirmar.isEmpty() && !nombreObjetoConfirmar.isEmpty() && !rarezaObjetoConfirmar.isEmpty() 
         && !precioObjetoConfirmar.isEmpty() && !descripcionObjetoConfirmar.isEmpty() && !nombreObjetoConfirmar.isBlank()

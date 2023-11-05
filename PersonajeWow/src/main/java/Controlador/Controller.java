@@ -124,21 +124,36 @@ public final class Controller implements Serializable {
         Objeto objeto = new Objeto();
         try{
             if(nombreObjeto != null && rareza != null && precio != null && descipcion != null){
+                //Eliminamos los espacios en blanco
+                nombreObjeto = nombreObjeto.trim();
+                nombreObjeto = rareza.trim();
+                nombreObjeto = descipcion.trim();
+                //Filtro para saber si el precio es mayor que 0
+                double precioParseado = Double.parseDouble(precio);
+                if (precioParseado >= 1) {
                     objeto.setNombreObjeto(nombreObjeto);
                     objeto.setRareza(rareza);
                     objeto.setDescripcion(descipcion);
-                    objeto.setPrecio(Integer.parseInt(precio));
+                    objeto.setPrecio(precioParseado);
                     ArrayDeObjetosSistema.add(objeto);
                     serializarObjetosSistema(ArrayDeObjetosSistema);
                     cargarObjetoEnTabla(ArrayDeObjetosSistema);
                     JOptionPane.showMessageDialog(vista, "Objeto añadido con exito", "OK", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(vista, "El precio debe ser mayor que 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
             else{
                 JOptionPane.showMessageDialog(vista, "No puede haber campos vacios!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
          catch(NumberFormatException formatoIncorrecto){
-            System.out.println(formatoIncorrecto.getMessage());
+             JOptionPane.showMessageDialog(ventana, "El precio debe de ser un numero", "Error", JOptionPane.ERROR_MESSAGE);;
+
+        }
+        catch(NullPointerException nulo){
+            JOptionPane.showMessageDialog(ventana, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+
         }
     }
     
@@ -209,15 +224,23 @@ public final class Controller implements Serializable {
     
     public void modificarObjeto(String id, String nombre, String rareza, String precio, String descripcion){
         if(getPosicionObjetoById(id) !=-1){
-            if(getArrayDeObjetosSistema().get(getPosicionObjetoById(id)) != null){
-                getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setNombreObjeto(nombre);
-                getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setRareza(rareza);
-                getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setPrecio(Double.parseDouble(precio));
-                getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setDescripcion(descripcion);
-                serializarObjetosSistema(ArrayDeObjetosSistema);
-                cargarObjetoEnTabla(ArrayDeObjetosSistema);
-                JOptionPane.showMessageDialog(vista, "Objeto modificado correctamente", "OK", JOptionPane.INFORMATION_MESSAGE);
-
+            try {
+                double precioParseado = Double.parseDouble(precio);
+                if (getArrayDeObjetosSistema().get(getPosicionObjetoById(id)) != null && precioParseado >= 1) {
+                    getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setNombreObjeto(nombre);
+                    getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setRareza(rareza);
+                    getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setPrecio(precioParseado);
+                    getArrayDeObjetosSistema().get(getPosicionObjetoById(id)).setDescripcion(descripcion);
+                    serializarObjetosSistema(ArrayDeObjetosSistema);
+                    cargarObjetoEnTabla(ArrayDeObjetosSistema);
+                    JOptionPane.showMessageDialog(vista, "Objeto modificado correctamente", "OK", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(vista, "El precio debe ser mayor que 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException formatoIncorrecto) {
+                JOptionPane.showMessageDialog(ventana, "El precio debe de ser un numero", "Error", JOptionPane.ERROR_MESSAGE);;
+            } catch (NullPointerException campoVacio) {
+                JOptionPane.showMessageDialog(ventana, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
