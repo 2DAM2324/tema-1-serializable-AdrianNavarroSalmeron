@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<objetos>
+    <objeto>
+        <id_objeto>OB11</id_objeto>
+        <nombre_objeto>Daga de mithril</nombre_objeto>
+        <rareza_objeto>Rara</rareza_objeto>
+        <precio_objeto>40.0</precio_objeto>
+        <descripcion_objeto>Pincha</descripcion_objeto>
+    </objeto>
+    <objeto>
+        <id_objeto>OB2</id_objeto>
+        <nombre_objeto>Escudo basico</nombre_objeto>
+        <rareza_objeto>Comun</rareza_objeto>
+        <precio_objeto>4.0</precio_objeto>
+        <descripcion_objeto>Escudo basico pero basico basico</descripcion_objeto>
+    </objeto>
+</objetos>
